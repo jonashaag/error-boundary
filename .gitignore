@@ -1,0 +1,6 @@
+*.pyc
+.cache/
+.coverage
+venv/
+htmlcov/
+docs/_build

@@ -1,0 +1,7 @@
+- repo: local
+  hooks:
+  - id: python-lint
+    name: python-lint
+    language: system
+    types: [python]
+    entry: ./python-lint.sh
