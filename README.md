@@ -70,7 +70,7 @@ with production_error_boundary:
 
 ### Logging 
 
-Exceptions are logged to the console using a Python `logging.Logger` based default logger (see reference documentation for details).
+Exceptions are logged to the console using a Python `logging.Logger` based default logger (see [reference documentation](http://python-error-boundaries.readthedocs.io/en/latest/error_boundary.html) for details).
 
 You can customize the default logger or provide your own logging altogether. This package ships with the following error boundary loggers:
 
@@ -110,7 +110,7 @@ with ErrorBoundary(dont_catch=[MyException]):
 
 ### Customization
 
-You can customize many aspects of error boundaries by overwriting hook methods provided by this package. See the reference documentation for details. In doubt, read the source, it's pretty simple.
+You can customize many aspects of error boundaries by overwriting hook methods provided by this package. See the [reference documentation](http://python-error-boundaries.readthedocs.io/en/latest/error_boundary.html) for details. In doubt, read the source, it's pretty simple.
 
 | Method                                   | Description                              |
 | ---------------------------------------- | ---------------------------------------- |
@@ -139,3 +139,6 @@ with DjangoSettingErrorBoundary('not MY_DEBUG', ...):
     # Suppress exceptions if MY_DEBUG = False, otherwise propagate.
 ```
 
+### Reference documentation
+
+[Reference documentation](http://python-error-boundaries.readthedocs.io/en/latest/error_boundary.html)
