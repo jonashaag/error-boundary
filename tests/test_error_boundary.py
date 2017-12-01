@@ -76,7 +76,7 @@ def test_loggers_argument(TestBoundary):
     mylogger = unittest.mock.MagicMock()
     test_boundary = TestBoundary(loggers=[mylogger])
     assert_suppresses(test_boundary)
-    mylogger.assert_called_once()
+    mylogger.assert_called_once_with(test_boundary.exc_info)
     for logger in test_boundary.__class__.loggers:
         logger.assert_not_called()
 
@@ -123,7 +123,7 @@ def test_broken___exit__():
     @contextlib.contextmanager
     def _test(broken_method):
         class BrokenErrorBoundary(error_boundary.ErrorBoundary):
-            exec(f'{broken_method} = always_raise')
+            exec(broken_method + ' = always_raise')
 
         with unittest.mock.patch(
                 'error_boundary._internal_logger') as mock_internal_logger:
