@@ -123,7 +123,7 @@ def test_broken___exit__():
     @contextlib.contextmanager
     def _test(broken_method):
         class BrokenErrorBoundary(error_boundary.ErrorBoundary):
-            exec(f'{broken_method} = always_raise')
+            exec(broken_method + ' = always_raise')
 
         with unittest.mock.patch(
                 'error_boundary._internal_logger') as mock_internal_logger:
