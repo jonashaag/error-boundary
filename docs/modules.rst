@@ -1,5 +1,5 @@
-suppress-exceptions
-===================
+Python Error Boundaries
+=======================
 
 .. toctree::
    :maxdepth: 4
