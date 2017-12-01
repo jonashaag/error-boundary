@@ -1,6 +1,6 @@
 # Python Error Boundaries
 
-A Python library for inserting error boundaries in your code.
+A Python library for inserting error boundaries in your code. `pip install error-boundary`
 
 [![Build Status](https://travis-ci.org/cashlink/error-boundary.svg?branch=travis)](https://travis-ci.org/cashlink/error-boundary)
 
