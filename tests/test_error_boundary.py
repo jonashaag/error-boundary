@@ -76,7 +76,7 @@ def test_loggers_argument(TestBoundary):
     mylogger = unittest.mock.MagicMock()
     test_boundary = TestBoundary(loggers=[mylogger])
     assert_suppresses(test_boundary)
-    mylogger.assert_called_once()
+    mylogger.assert_called_once_with(test_boundary.exc_info)
     for logger in test_boundary.__class__.loggers:
         logger.assert_not_called()
 

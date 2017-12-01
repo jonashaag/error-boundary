@@ -3,4 +3,3 @@ pytest-cov
 yapf
 isort
 pre-commit
-sphinx

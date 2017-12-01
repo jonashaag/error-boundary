@@ -9,4 +9,5 @@ python:
 install:
   - pip install -r requirements-dev.txt
 script:
-  - env PYTHONPATH=.:tests pytest
+  - pre-commit run -a --show-diff-on-failure
+  - py.test
