@@ -2,6 +2,8 @@
 
 A Python library for inserting error boundaries in your code.
 
+[![Build Status](https://travis-ci.org/cashlink/error-boundary.svg?branch=travis)](https://travis-ci.org/cashlink/error-boundary)
+
 ## What are Error Boundaries?
 
 An error boundary prevents exceptions in a code block from crashing your program.
