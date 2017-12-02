@@ -91,8 +91,8 @@ Exceptions are logged to the console using a Python `logging.Logger` based defau
 
 You can customize the default logger or provide your own logging altogether. This package ships with the following error boundary loggers:
 
-- A Python `logging.Logger` based logger
-- A Sentry/Raven logger
+- Python `logging.Logger` based logger
+- Sentry/Raven logger
 
 Error boundary loggers can be specfied with the `loggers` argument:
 
@@ -103,7 +103,7 @@ with ErrorBoundary(loggers=[default_logging_logger, django_raven_logger]):
     ...
 ```
 
-Loggers have a very simple interface:
+Error boundary loggers have a very simple interface:
 
 ```python
 def my_custom_logger(exc_info):
