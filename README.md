@@ -44,6 +44,23 @@ def some_view(request):
     return HttpResponse(...)
 ```
 
+### Using as decorator
+
+Error boundaries may also be used as decorators:
+
+```python
+@ErrorBoundary()
+def foo():
+    ...
+
+# Equivalent to:
+def foo():
+    with ErrorBoundary():
+        ...
+```
+
+(See the Python built-in `contextlib.ContextDecorator` for the general pattern of hybrid context managers / decorators.)
+
 ### Activating the boundary only in production
 
 This is the recommended way to use error boundaries. In development you'll want to never "miss" an error. In production, failures in optional code should not make your program fail.
