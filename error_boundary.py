@@ -210,7 +210,7 @@ class ProductionErrorBoundary(ErrorBoundary):
     """Error boundary that suppresses exceptions in production, but propagates
     them during development.
 
-    This is recommended error boundary mode.
+    This is the recommended error boundary mode.
 
     Args:
         is_production (bool): Are we in production?
@@ -227,8 +227,8 @@ class ProductionErrorBoundary(ErrorBoundary):
         return super().should_propagate_exception(exc_info)
 
 
-class DjangoSettingErrorBoundary(ProductionErrorBoundary):
-    """Convenience error boundary for Django. Propagate exceptions if `DEBUG`
+class DjangoSettingErrorBoundary(ErrorBoundary):
+    """Error boundary for Django. Propagate exceptions if `DEBUG`
     is true, otherwise suppress.
 
     Args:
@@ -240,9 +240,17 @@ class DjangoSettingErrorBoundary(ProductionErrorBoundary):
     """
 
     def __init__(self, setting_name='not DEBUG', **kwds):
+        self.setting_name = setting_name
+        super().__init__(**kwds)
+
+    def in_production(self):
         from django.conf import settings
-        if setting_name.startswith('not '):
-            is_production = not getattr(settings, setting_name[4:])
+        if self.setting_name.startswith('not '):
+            return not getattr(settings, self.setting_name[4:])
         else:
-            is_production = getattr(settings, setting_name)
-        super().__init__(is_production, **kwds)
+            return getattr(settings, self.setting_name)
+
+    def should_propagate_exception(self, exc_info):
+        if not self.in_production():
+            return 'not-production'
+        return super().should_propagate_exception(exc_info)
